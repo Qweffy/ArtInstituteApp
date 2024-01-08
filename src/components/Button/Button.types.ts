@@ -1,12 +1,6 @@
 import { ViewStyle } from 'react-native'
 
-export type ButtonInputProps = {
-  isLoading?: boolean
-}
-
-export type ButtonFunctionProps = {}
-
-export type ButtonOwnProps = {
+export type ButtonProps = {
   mainColor?: string
   disabled?: boolean
   label: string
@@ -14,6 +8,5 @@ export type ButtonOwnProps = {
   buttonStyles?: ViewStyle
   labelStyles?: ViewStyle
   onPress: (() => {}) | (() => void)
+  isLoading?: boolean
 }
-
-export type ButtonProps = ButtonInputProps & ButtonFunctionProps & ButtonOwnProps

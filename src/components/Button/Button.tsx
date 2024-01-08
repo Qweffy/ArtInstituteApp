@@ -22,12 +22,19 @@ export const Button = ({
 
   return (
     <View style={[styles.buttonContainer, containerStyles]}>
-      <TouchableOpacity
-        style={[styles.button, buttonBackground, disabledButton, buttonStyles]}
-        onPress={onPress}
-        disabled={disabled}>
-        <Text style={[styles.buttonLabel, disabledLabel, labelStyles]}>{label}</Text>
-      </TouchableOpacity>
+      {isLoading ? (
+        <TouchableOpacity style={[styles.button, buttonBackground, disabledButton, buttonStyles]} disabled>
+          <ActivityIndicator style={styles.spinner} size="small" />
+          <Text style={[styles.buttonLabel, disabledLabel, labelStyles]}>{label}</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={[styles.button, buttonBackground, disabledButton, buttonStyles]}
+          onPress={onPress}
+          disabled={disabled}>
+          <Text style={[styles.buttonLabel, disabledLabel, labelStyles]}>{label}</Text>
+        </TouchableOpacity>
+      )}
     </View>
   )
 }

@@ -44,7 +44,7 @@ exports[`<Button/> <Button> renders correctly 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "purple",
+        "backgroundColor": "#3273dc",
         "borderRadius": 4,
         "flex": 1,
         "flexDirection": "row",
@@ -59,10 +59,9 @@ exports[`<Button/> <Button> renders correctly 1`] = `
       style={
         [
           {
-            "color": "white",
-            "fontFamily": "Open Sans",
+            "color": "#F5F5F5",
+            "fontFamily": "Montserrat",
             "fontSize": 16,
-            "fontWeight": "600",
             "letterSpacing": 0,
             "lineHeight": 24,
           },

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { View, TextInput } from 'react-native'
+import { TextInput } from 'react-native'
 import { useDispatch } from 'react-redux'
 import Button from '../../components/Button'
 import { addUser, changeEmail } from '../../store/features/user/userSlice'
+import styles from './Home.styles'
+import { ScreenWrapper } from '../../components/ScreenWrapper/ScreenWrapper'
 
 const Home = () => {
   const [name, setName] = useState('')
@@ -17,55 +19,15 @@ const Home = () => {
   const handleChangeEmail = () => {
     dispatch(changeEmail(email))
   }
-  console.log('test')
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          borderRadius: 5,
-          paddingHorizontal: 10,
-          marginBottom: 10,
-          width: '100%',
-        }}
-        value={name}
-        onChangeText={setName}
-        placeholder="Name"
-      />
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          borderRadius: 5,
-          paddingHorizontal: 10,
-          marginBottom: 10,
-          width: '100%',
-        }}
-        value={username}
-        onChangeText={setUsername}
-        placeholder="Username"
-      />
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          borderRadius: 5,
-          paddingHorizontal: 10,
-          marginBottom: 10,
-          width: '100%',
-        }}
-        value={email}
-        onChangeText={setEmail}
-        placeholder="Email"
-      />
+    <ScreenWrapper>
+      <TextInput style={styles.textInput} value={name} onChangeText={setName} placeholder="Name" />
+      <TextInput style={styles.textInput} value={username} onChangeText={setUsername} placeholder="Username" />
+      <TextInput style={styles.textInput} value={email} onChangeText={setEmail} placeholder="Email" />
       <Button label="Add User" onPress={handleSubmit} />
       <Button label="Change Email" onPress={handleChangeEmail} />
-    </View>
+    </ScreenWrapper>
   )
 }
 
