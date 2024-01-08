@@ -1,21 +1,12 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import Button from './src/components/Button'
+import { Provider } from 'react-redux'
+import { store } from './src/store/store'
+import Home from './src/pages/Home/Home'
 
-function App(): JSX.Element {
-  return (
-    <View style={styles.container}>
-      <Button onPress={() => console.log('hola')} label={'hola'} />
-    </View>
-  )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
+const App = () => (
+  <Provider store={store}>
+    <Home />
+  </Provider>
+)
 
 export default App
