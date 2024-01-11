@@ -1,6 +1,6 @@
 import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native'
 
-type HomeStyleType = {
+type FavoritesStyleType = {
   container: ViewStyle
   itemContainer: ViewStyle
   title: TextStyle
@@ -8,7 +8,7 @@ type HomeStyleType = {
   image: ImageStyle
 }
 
-export default StyleSheet.create<HomeStyleType>({
+export default StyleSheet.create<FavoritesStyleType>({
   container: {
     flex: 1,
     backgroundColor: '#fff', // Puedes cambiar el color de fondo según tus preferencias
