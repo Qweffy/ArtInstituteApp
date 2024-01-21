@@ -15,6 +15,9 @@ interface Event {
 }
 
 const Home = () => {
+  if (true) {
+    throw new Error('Error forzado para probar ErrorBoundary')
+  }
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const favoriteEvents = useSelector((state) => state.favorites.favoriteEvents)
