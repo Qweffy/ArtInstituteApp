@@ -5,6 +5,7 @@ import StarRating from 'react-native-star-rating-widget'
 import styles from './EventDetail.styles'
 import eventService from '../../services/exhibitionService'
 import { addFavorite, removeFavorite } from '../../store/slices/favoritesSlice'
+import VerticalButtonsAlert from '../../components/VerticalButtonsAlert'
 
 interface EventDetail {
   id: string
@@ -25,7 +26,7 @@ const EventDetailComponent = ({ route }) => {
   const dispatch = useDispatch()
   const favoriteEvents = useSelector((state) => state.favorites.favoriteEvents)
   const [eventDetail, setEventDetail] = useState<EventDetail | null>(null)
-
+  const [hasError, setHasError] = useState(false)
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
@@ -33,6 +34,7 @@ const EventDetailComponent = ({ route }) => {
         setEventDetail(response.data)
       } catch (error) {
         console.error('Error al obtener los detalles del evento: ', error)
+        setHasError(true)
       }
     }
 
@@ -50,7 +52,21 @@ const EventDetailComponent = ({ route }) => {
       }
     }
   }
-
+  if (!hasError) {
+    return (
+      <VerticalButtonsAlert
+        title="Error"
+        description="No se pudo cargar el detalle del evento."
+        buttons={[
+          {
+            buttonId: 1,
+            buttonAction: () => console.log('hi'),
+            buttonText: 'Back',
+          },
+        ]}
+      />
+    )
+  }
   if (!eventDetail) {
     return <Text>Cargando...</Text>
   }
