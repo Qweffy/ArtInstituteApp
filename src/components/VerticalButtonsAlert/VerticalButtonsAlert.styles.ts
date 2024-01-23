@@ -26,7 +26,8 @@ export default StyleSheet.create<VerticalButtonsAlertStyles>({
   },
   popUpContainer: {
     flexDirection: 'column',
-    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'space-between',
     width: cardWidth,
     backgroundColor: PrimaryColors.White,
     borderRadius: 8,

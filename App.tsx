@@ -14,14 +14,14 @@ const FavoritesStack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
 const HomeStackScreen = () => (
-  <HomeStack.Navigator>
+  <HomeStack.Navigator screenOptions={{ headerShown: false }}>
     <HomeStack.Screen name="Home" component={Home} />
     <HomeStack.Screen name="EventDetail" component={EventDetailComponent} />
   </HomeStack.Navigator>
 )
 
 const FavoritesStackScreen = () => (
-  <FavoritesStack.Navigator>
+  <FavoritesStack.Navigator screenOptions={{ headerShown: false }}>
     <FavoritesStack.Screen name="Favorites" component={Favorites} />
   </FavoritesStack.Navigator>
 )
@@ -29,7 +29,10 @@ const FavoritesStackScreen = () => (
 const App = () => (
   <Provider store={store}>
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Favorites" component={FavoritesStackScreen} />
       </Tab.Navigator>

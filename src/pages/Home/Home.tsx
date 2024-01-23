@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FlatList, Text, View, Image, TouchableOpacity } from 'react-native'
+import { FlatList, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import StarRating from 'react-native-star-rating-widget'
@@ -52,20 +52,22 @@ const Home = () => {
   const renderItem = ({ item }) => {
     const isFavorite = favoriteEvents.some((favEvent) => favEvent.id === item.id)
     return (
-      <View style={styles.itemContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('EventDetail', { eventId: item.id })}>
-          <Text style={styles.title}>{item.title}</Text>
-          {item.image_url && <Image source={{ uri: item.image_url }} style={styles.image} />}
-          <Text style={styles.description}>{item.short_description}</Text>
-        </TouchableOpacity>
-        <StarRating
-          rating={isFavorite ? 1 : 0}
-          onChange={() => toggleFavorite(item)}
-          maxStars={1}
-          starSize={30}
-          color={isFavorite ? 'yellow' : 'gray'}
-        />
-      </View>
+      <SafeAreaView>
+        <View style={styles.itemContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('EventDetail', { eventId: item.id })}>
+            <Text style={styles.title}>{item.title}</Text>
+            {item.image_url && <Image source={{ uri: item.image_url }} style={styles.image} />}
+            <Text style={styles.description}>{item.short_description}</Text>
+          </TouchableOpacity>
+          <StarRating
+            rating={isFavorite ? 1 : 0}
+            onChange={() => toggleFavorite(item)}
+            maxStars={1}
+            starSize={30}
+            color={isFavorite ? 'yellow' : 'gray'}
+          />
+        </View>
+      </SafeAreaView>
     )
   }
 

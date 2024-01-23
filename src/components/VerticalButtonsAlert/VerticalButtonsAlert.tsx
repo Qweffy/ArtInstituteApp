@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActivityIndicator, Text, View } from 'react-native'
+import { ActivityIndicator, Dimensions, Image, Text, TouchableOpacity, View } from 'react-native'
 
 import styles from './VerticalButtonsAlert.styles'
 import { VerticalButtonsAlertProps } from './VerticalButtonsAlert.types'
@@ -12,28 +12,56 @@ export const VerticalButtonsAlert = ({
   description = '',
   isLoading = false,
 }: VerticalButtonsAlertProps) => (
-  <View style={styles.fullScreenContainer}>
-    <View style={styles.popUpContainer}>
-      <View style={styles.messageContainer}>
-        {title.length > 0 && <Text style={styles.titleText}>{title}</Text>}
-        <Text style={styles.descriptionText}>{description}</Text>
-      </View>
-      {!isLoading && (
-        <View style={styles.buttonsContainer}>
-          {buttons.map((button) => (
-            <View style={styles.linkButtonContainer} key={button.buttonId}>
-              <Button onPress={button.buttonAction} label={button.buttonText} containerStyles={styles.button} />
-            </View>
-          ))}
-        </View>
-      )}
-      {!!isLoading && (
-        <View style={styles.buttonsContainer}>
-          <View style={styles.linkButtonContainer}>
-            <ActivityIndicator style={styles.button} color={PrimaryColors.CTA} size="small" />
-          </View>
-        </View>
-      )}
-    </View>
+  <View
+    style={{
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#FCB82F',
+    }}>
+    <Image
+      source={require('../../assets/404.png')}
+      style={{
+        width: Dimensions.get('screen').width - 80,
+        height: 320,
+      }}
+      resizeMode="contain"
+    />
+    <Text
+      style={{
+        color: '#000',
+        fontWeight: 'bold',
+        fontSize: 25,
+        textAlign: 'center',
+      }}>
+      {`Oops! You weren't\nsupposed to see this.`}
+    </Text>
+    <Text
+      style={{
+        color: '#000',
+        fontWeight: '600',
+        fontSize: 12,
+        marginVertical: 10,
+      }}>
+      The page you were looking was loading incorrectly.
+    </Text>
+    <TouchableOpacity
+      onPress={() => {}}
+      style={{
+        backgroundColor: '#000',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        marginTop: 10,
+        borderRadius: 5,
+      }}>
+      <Text
+        style={{
+          color: '#FFF',
+          fontWeight: '600',
+          fontSize: 14,
+        }}>
+        GO BACK
+      </Text>
+    </TouchableOpacity>
   </View>
 )
